@@ -1,7 +1,7 @@
 import streamlit as st
 import preprocess
 
-st.sidebar.title("Whatsapp Chat Analyzer")
+st.sidebar.title("Text Message Analyzer")
 
 uploaded_file = st.sidebar.file_uploader("Choose a file")
 if uploaded_file is not None:
