@@ -25,6 +25,36 @@ def create_wordcloud(selected_user, df):
     
     return wordcloud
 
+def daily_timeline(selected_user, df):
+    """
+    Create a timeline of message counts per day for the selected user.
+    """
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+
+    daily_timeline = df.groupby('only_date').count()['message'].reset_index()
+    return daily_timeline
+
+
+def week_activity_map(selected_user, df):
+    """
+    Create a map of message activity by day of the week for the selected user.
+    """
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+
+    return df['day_name'].value_counts()
+
+
+def month_activity_map(selected_user, df):
+    """
+    Create a map of message activity by month for the selected user.
+    """
+    if selected_user != 'Overall':
+        df = df[df['user'] == selected_user]
+
+    return df['month'].value_counts()
+
 def activity_heatmap(selected_user, df):
     """
     Generate a heatmap of user activity by day and time period.
